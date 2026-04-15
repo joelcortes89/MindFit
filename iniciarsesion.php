@@ -1,48 +1,100 @@
+<?php
+session_start();
+require_once "conexion.php";
+
+$mensaje = "";
+
+if (isset($_SESSION["usuario"])) {
+    header("Location: index.php");
+    exit();
+}
+
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+    $correo = trim($_POST["correo"]);
+    $password = $_POST["password"];
+
+  
+    $stmt = $conexion->prepare("SELECT * FROM usuarios WHERE correo = ?");
+    $stmt->bind_param("s", $correo);
+    $stmt->execute();
+    $resultado = $stmt->get_result();
+
+    if ($resultado->num_rows === 1) {
+
+        $usuario = $resultado->fetch_assoc();
+
+  
+        if (password_verify($password, $usuario["contraseña"])) {
+
+          
+        
+            $_SESSION["usuario"] = [
+                "id" => $usuario["id"],
+                "nombre" => $usuario["nombre"],
+                "correo" => $usuario["correo"]
+            ];
+
+            // REDIRECCIÓN
+            header("Location: index.php");
+            exit();
+
+        } else {
+            $mensaje = "<div class='mensaje error'>Contraseña incorrecta</div>";
+        }
+
+    } else {
+        $mensaje = "<div class='mensaje error'>Usuario no encontrado</div>";
+    }
+
+    $stmt->close();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
-    <link rel="stylesheet" href="estilos.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Iniciar Sesión | Mindfit</title>
+
+    <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
 
-<div class="login-container">
-    <h2>Iniciar Sesión</h2>
+<!-- LOGIN -->
+<section class="formulario-registro">
 
-    <form method="POST" action="iniciarsesion.php">
-        <input type="email" name="correo" placeholder="Correo" required>
-        <input type="password" name="contraseña" placeholder="Contraseña" required>
-        <button type="submit">Entrar</button>
-    </form>
-</div>
-<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    <div class="contenedor-formulario">
 
-    $conexion = mysqli_connect("localhost", "root", "", "mindfit");
+        <h2>Iniciar Sesión</h2>
 
-    $correo = $_POST['correo'];
-    $password = $_POST['contraseña'];
+        <?php echo $mensaje; ?>
 
-    $query = "SELECT * FROM usuarios WHERE correo = ?";
-    $stmt = mysqli_prepare($conexion, $query);
-    mysqli_stmt_bind_param($stmt, "s", $correo);
-    mysqli_stmt_execute($stmt);
-    $resultado = mysqli_stmt_get_result($stmt);
+        <form method="POST">
 
-    if (mysqli_num_rows($resultado) > 0) {
-        $usuario = mysqli_fetch_assoc($resultado);
+            <div class="campo-formulario">
+                <label>Correo Electrónico</label>
+                <input type="email" name="correo" required>
+            </div>
 
-        if (password_verify($password, $usuario['contraseña'])) {
-            echo "Bienvenido";
-        } else {
-            echo "Contraseña incorrecta";
-        }
-    } else {
-        echo "Usuario no encontrado";
-    }
+            <div class="campo-formulario">
+                <label>Contraseña</label>
+                <input type="password" name="password" required>
+            </div>
 
-}
-?>
+            <button type="submit" class="btn-enviar">
+                Entrar
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
 </body>
 </html>
