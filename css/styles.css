@@ -1,0 +1,112 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #0a0a0a, #0f1f0f);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formulario-registro {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedor-formulario {
+    background: rgba(0, 0, 0, 0.85);
+    padding: 40px;
+    border-radius: 15px;
+    width: 350px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 20px rgba(0, 255, 100, 0.2);
+    border: 1px solid rgba(0, 255, 100, 0.3);
+    animation: aparecer 0.8s ease;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h2 {
+    text-align: center;
+    color: #00ff88;
+    margin-bottom: 25px;
+    text-shadow: 0 0 10px #00ff88;
+}
+
+.contenedor-formulario p,
+.contenedor-formulario {
+    color: #ccc;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.campo-formulario {
+    margin-bottom: 20px;
+}
+
+.campo-formulario label {
+    display: block;
+    margin-bottom: 5px;
+    color: #00ff88;
+    font-size: 14px;
+}
+
+.campo-formulario input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    background: #111;
+    color: #fff;
+    border: 1px solid #00ff88;
+    transition: 0.3s;
+}
+
+
+.campo-formulario input:focus {
+    box-shadow: 0 0 10px #00ff88;
+    transform: scale(1.02);
+}
+
+
+.btn-enviar {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(90deg, #00ff88, #00cc66);
+    border: none;
+    border-radius: 10px;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-enviar:hover {
+    background: linear-gradient(90deg, #00cc66, #00ff88);
+    box-shadow: 0 0 15px #00ff88;
+    transform: scale(1.05);
+}
+
+.contenedor-formulario echo,
+.contenedor-formulario span {
+    color: #ff4d4d;
+    font-size: 14px;
+}

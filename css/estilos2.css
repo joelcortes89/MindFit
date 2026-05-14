@@ -1,0 +1,158 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #050505, #0d1f0d);
+    color: #fff;
+}
+
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background: #000;
+    border-bottom: 1px solid #00ff88;
+}
+
+.navbar-logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logo-mind {
+    color: #fff;
+}
+
+.logo-fit {
+    color: #00ff88;
+    text-shadow: 0 0 10px #00ff88;
+}
+
+.navbar-links a {
+    color: #ccc;
+    margin-left: 20px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.navbar-links a:hover {
+    color: #00ff88;
+}
+
+.formulario-registro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+}
+
+.contenedor-formulario {
+    background: rgba(0, 0, 0, 0.85);
+    padding: 35px;
+    border-radius: 15px;
+    width: 400px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 25px rgba(0, 255, 100, 0.2);
+    border: 1px solid rgba(0, 255, 100, 0.3);
+    animation: aparecer 0.7s ease;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h2 {
+    text-align: center;
+    color: #00ff88;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px #00ff88;
+}
+
+.contenedor-formulario p {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.campo-formulario {
+    margin-bottom: 15px;
+}
+
+.campo-formulario label {
+    display: block;
+    margin-bottom: 5px;
+    color: #00ff88;
+    font-size: 13px;
+}
+
+.campo-formulario input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    background: #111;
+    border: 1px solid #00ff88;
+    color: #fff;
+    outline: none;
+    transition: 0.3s;
+}
+
+.campo-formulario input:focus {
+    box-shadow: 0 0 10px #00ff88;
+    transform: scale(1.02);
+}
+
+.btn-enviar {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #00ff88, #00cc66);
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-enviar:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #00ff88;
+}
+
+.pie-pagina {
+    text-align: center;
+    padding: 20px;
+    background: #000;
+    border-top: 1px solid #00ff88;
+    margin-top: 40px;
+}
+
+.pie-pagina p {
+    color: #888;
+    font-size: 14px;
+}
+
+@media (max-width: 500px) {
+    .contenedor-formulario {
+        width: 90%;
+    }
+
+    .navbar {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

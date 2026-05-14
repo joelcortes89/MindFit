@@ -1,0 +1,96 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #050505, #0d1f0d);
+    color: #fff;
+    padding: 40px;
+}
+
+h1 {
+    text-align: center;
+    color: #00ff88;
+    text-shadow: 0 0 15px #00ff88;
+    margin-bottom: 20px;
+}
+
+p {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #ccc;
+}
+
+ul {
+    list-style: none;
+    max-width: 400px;
+    margin: auto;
+}
+
+ul li {
+    margin-bottom: 15px;
+}
+
+ul li a {
+    display: block;
+    text-align: center;
+    padding: 12px;
+    border-radius: 10px;
+    text-decoration: none;
+    background: rgba(0,0,0,0.85);
+    border: 1px solid rgba(0,255,136,0.3);
+    color: #00ff88;
+    transition: 0.3s;
+    box-shadow: 0 0 10px rgba(0,255,136,0.2);
+}
+
+ul li a:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #00ff88;
+    background: #000;
+}
+
+a[href="logout.php"] {
+    display: block;
+    margin: 40px auto 0;
+    text-align: center;
+    width: 200px;
+    padding: 10px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #ff4d4d, #cc0000);
+    color: #fff;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+a[href="logout.php"]:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px red;
+}
+
+.panel {
+    max-width: 500px;
+    margin: auto;
+    padding: 30px;
+    border-radius: 15px;
+    background: rgba(0,0,0,0.85);
+    border: 1px solid rgba(0,255,136,0.3);
+    box-shadow: 0 0 25px rgba(0,255,136,0.2);
+    backdrop-filter: blur(10px);
+    animation: aparecer 0.7s ease;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
